@@ -30,7 +30,8 @@ function UploadPage() {
     formData.append('filterColumnName', filterColumnName);
 
     try {
-      const response = await axios.post('http://localhost:3001/excel/upload', formData);
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+      const response = await axios.post(`${API_URL}/excel/upload`, formData);
       
       // Navigate to preview page with data
       navigate('/preview', { 

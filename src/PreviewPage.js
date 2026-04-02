@@ -45,7 +45,8 @@ function PreviewPage() {
 
   const handleDownload = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/excel/download', 
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+      const response = await axios.post(`${API_URL}/excel/download`, 
         { resultId },
         { responseType: 'blob' }
       );
@@ -71,7 +72,8 @@ function PreviewPage() {
         return;
       }
 
-      const response = await axios.post('http://localhost:3001/excel/download-sheet', 
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+      const response = await axios.post(`${API_URL}/excel/download-sheet`, 
         { resultId, sheetIndex: selectedSheet },
         { responseType: 'blob' }
       );
